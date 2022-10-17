@@ -1,0 +1,63 @@
+<br><br><br>
+<div class="row">
+  <div class="card col-md-6 offset-md-3 offset-md-3">
+    <div class="row">
+      <h3 class="text-center"> Edit Student </h3>
+      <hr />
+      <div class="card-body">
+        <form [formGroup]="studentEditForm" (ngSubmit)="save()">
+          <label for="firstname">First Name:</label><br>
+          <input type="text" id="firstname" formControlName="firstname"><br>
+          <span *ngIf="studentEditForm.get('firstname').hasError('required')" style="color: RED;">
+            name is required
+          </span>
+          <span *ngIf="studentEditForm.get('firstname').hasError('pattern')" style="color: RED;">
+             name Not valid.
+          </span>
+          <span *ngIf="studentEditForm.get('firstname').hasError('minlength')" style="color: RED;">
+             name should be greater than 2 letters
+          </span><br>
+          <label for="lastname">Last Name:</label><br>
+          <input type="text" id="lastname" name="lastname" formControlName="lastname" ><br>
+          <span *ngIf="studentEditForm.get('lastname').hasError('pattern')">
+             name Not valid.
+         </span>
+          <br>
+
+          <label for="email">Email :</label><br>
+          <input type="text" id="email" formControlName="email"><br>
+          <span *ngIf="studentEditForm.get('email').hasError('required')" style="color: RED;">
+            email is required
+          </span>
+          <span *ngIf="studentEditForm.get('email').hasError('email')" style="color: RED;">
+             email Not valid format
+          </span><br>
+          <label for="mobile">Mobile No:</label><br>
+          <input type="text" id="mobile" formControlName="mobile"><br>
+          <span *ngIf="studentEditForm.get('mobile').hasError('required')" style="color: RED;">
+             mobile number is required
+          </span>
+          <span *ngIf="studentEditForm.get('mobile').hasError('pattern')" style="color: RED;">
+             mobile number Not valid.
+          </span>
+          <span *ngIf="studentEditForm.get('mobile').hasError('minlength')" style="color: RED;">
+             mobile must be of 10 digits
+          </span>
+          <span *ngIf="studentEditForm.get('mobile').hasError('maxlength')" style="color: RED;">
+            mobile must be of 10 digits
+          </span>
+          <br>
+          <label for="gender">Gender:</label><br>
+          <input type="text" id="gender" formControlName="gender"><br>
+          <span *ngIf="studentEditForm.get('gender').hasError('required')" style="color: RED;">
+             gender is required
+          </span><br>
+          <br />
+          <br />
+          <button [routerLink]="['/show']" class="btn btn-warning">Back</button>&nbsp;
+          <button class="btn btn-success" type="submit" [disabled]="!studentEditForm.valid">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

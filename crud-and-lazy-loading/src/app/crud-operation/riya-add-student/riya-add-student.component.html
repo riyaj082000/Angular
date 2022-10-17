@@ -1,0 +1,66 @@
+<br><br><br>
+<div class="row">
+   <div class="card col-md-6 offset-md-3 offset-md-3">
+      <div class="row">
+         <h3 class="text-center"> Create EmployeStudent </h3>
+         <hr />
+         <div class="card-body">
+            <form [formGroup]="StudentForm" (ngSubmit)="onSubmit()">
+               <label for="id">Id:</label><br>
+               <input type="text" formControlName="id">
+               <br>
+               <label for="name">First Name:</label><br>
+               <input type="text" id="firstname" name="firstname" formControlName="firstname" minlength="2"><br>
+               <span *ngIf="StudentForm.get('firstname').hasError('required')">
+                   name is required.
+               </span>
+               <span *ngIf="StudentForm.get('firstname').hasError('pattern')">
+                   name Not valid.
+               </span>
+               <span *ngIf="StudentForm.get('firstname').hasError('minlength')">
+                   name  should be greater than 2 letters.
+               </span><br>
+
+               <label for="lastname">Last Name:</label><br>
+               <input type="text" id="lastname" name="lastname" formControlName="lastname" ><br>
+               <span *ngIf="StudentForm.get('lastname').hasError('pattern')">
+                  name Not valid.
+              </span>
+               <br>
+
+               <label for="email">Email :</label><br>
+               <input type="text" id="email" formControlName="email"><br>
+               <span *ngIf="StudentForm.get('email').hasError('required')">
+                   email is required.
+               </span>
+               <span *ngIf="StudentForm.get('email').hasError('email')">
+                  email Not valid format.
+               </span><br>
+               <label for="mobile">Mobile No:</label><br>
+               <input type="text" id="mobile" minlength="10" maxlength="10" formControlName="mobile"><br>
+               <span *ngIf="StudentForm.get('mobile').hasError('required')">
+                   mobile number is required.
+               </span>
+               <span *ngIf="StudentForm.get('mobile').hasError('pattern')">
+                  mobile number Not valid.
+               </span>
+               <span *ngIf="StudentForm.get('mobile').hasError('minlength')">
+                   mobile number must be of 10 digits.
+               </span>
+               <span *ngIf="StudentForm.get('mobile').hasError('maxlength')">
+                  mobile number must be of 10 digits.
+               </span>
+               <br>
+               <label for="gender">Gender:</label><br>
+               <input type="text" id="gender" formControlName="gender"><br>
+               <span *ngIf="StudentForm.get('gender').hasError('required')">
+                  gender is required
+               </span><br>
+               <br />
+               <button [routerLink]="['/show']" class="btn btn-warning">Back</button>&nbsp;
+               <button class="btn btn-success" type="submit" [disabled]="!StudentForm.valid">Submit</button>
+
+            </form>
+         </div>
+      </div>
+   </div>
